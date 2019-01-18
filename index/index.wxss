@@ -1,0 +1,145 @@
+.page-body{
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+}
+.page-section {
+  box-sizing: border-box;
+  width: 100%;
+  height: 90%;
+}
+
+.map {
+  width: 100%;
+  height: 1100rpx;
+  position: relative;
+}
+
+.center {
+  position: absolute;
+  left: calc(50% - 16px);
+  top: calc(50% - 32px);
+  transform: translate(-50% -50%);
+}
+
+.center-image {
+  width: 32px;
+  height: 32px;
+}
+
+.center-text {
+  width: 120rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border-radius: 4rpx;
+  font-size: 12px;
+  background-color: red;
+  color: #fff;
+}
+
+.back {
+  position: absolute;
+  bottom: 100rpx;
+  left: 30rpx;
+}
+
+.back-image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.btn{
+  width: 100%;
+  height: 10%;
+}
+.determine-btn {
+  margin-top: 15rpx;
+}
+
+/**
+*输入Modal
+*/
+.input-modal {
+  width: 450rpx;
+  background-color: #fff;
+  position: relative;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20rpx;
+  font-size: 14px;
+  overflow: hidden;
+  height: 80px;
+}
+
+.input-text {
+  display: inline-block;
+  width: 120rpx;
+  height: 32px;
+  line-height: 32px;
+  padding-right: 10rpx;
+}
+
+.input-info {
+  display: inline-block;
+  width: 280rpx;
+  height: 32px;
+  line-height: 32px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 20rpx;
+  padding: 0px 16rpx;
+  color: #999;
+  border: 1px solid #dddddd;
+  position: relative;
+}
+
+.input-info .hide {
+  position: relative;
+  color: black;
+  top: 2px;
+}
+
+.input-determine {
+  width: 200rpx;
+  height: 30px;
+  border-radius: 8rpx;
+  text-align: center;
+  line-height: 30px;
+  background-color: #2dacfd;
+  color: #fff;
+  position: absolute;
+  right: 20rpx;
+  margin-top: 8px;
+}
+
+.select-info {
+  position: relative;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%);
+  width: 85%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: 0px 15px;
+  color: #999;
+}
+
+.select-info .selected {
+  line-height: 40px;
+}
+
+.select-info .select-list {
+  overflow-y: scroll;
+  max-height: 120px;
+}
+
+.select-info .select-list .select-item .item {
+  line-height: 30px;
+}
+
+.select-info .select-cancel {
+  height: 40px;
+  line-height: 40px;
+  color: rgb(26, 173, 25);
+  text-align: center;
+}

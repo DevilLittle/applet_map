@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "index/index",
+    "test/test",
+    "map_operation/map_operation"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "navigationBarTitleText": "小天才WiFi采集器",
+    "navigationBarTextStyle": "black"
+  }
+}

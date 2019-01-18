@@ -1,0 +1,2 @@
+<!--test/test.wxml-->
+<text>{{name}}</text>

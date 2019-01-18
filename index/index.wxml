@@ -1,0 +1,34 @@
+<view class="page-body">
+  <view class="page-section">
+    <map id="myMap" class='map' style='{{mapStyle}}' latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" covers="{{covers}}" :enable-3D='true' polyline='{{polyline}}' show-location>
+      <!-- 中心标记点 -->
+      <cover-view class='center' wx:if='{{showMarkIcon}}'>
+        <cover-image class='center-image' src='../image/location-red.png' bindtap='markLocation'></cover-image>
+        <!-- <cover-view class='center-text' bindtap='markLocation'>标记地点</cover-view> -->
+      </cover-view>
+      <!-- 中心标记点 -->
+      <!-- 撤回按钮 -->
+      <!-- <cover-view class='back'>
+        <cover-image class='back-image' src='../image/back.png' bindtap='backLocation'></cover-image>
+      </cover-view> -->
+      <!-- 撤回按钮 -->
+
+      <!-- poi输入框 -->
+      <cover-view class='input-modal' wx:if='{{showIpnutModal}}'>
+        <cover-view class='input-text'>输入名称：</cover-view>
+        <cover-view class="input-info" bindtap="tapInput">
+          {{inputInfo}}
+          <input class="hide" value="{{searchText}}" focus="{{inputFocus}}" bindblur="blurInput"></input>
+        </cover-view>
+        <cover-view class='input-determine' bindtap='poiInputDetermine'>确定</cover-view>
+      </cover-view>
+      <!-- poi输入框 -->
+    </map>
+
+  </view>
+  <view class="btn">
+    <!-- <button bindtap="determine" class="determine-btn" type="primary">确定</button> -->
+    <!-- <button bindtap="translateMarker" class="page-body-button" type="primary">移动</button> -->
+    <!-- <button bindtap="next" class="page-body-button" type="primary">下一个</button> -->
+  </view>
+</view>
