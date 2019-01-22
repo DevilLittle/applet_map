@@ -4,14 +4,8 @@
       <!-- 中心标记点 -->
       <cover-view class='center' wx:if='{{showMarkIcon}}'>
         <cover-image class='center-image' src='../image/location-red.png' bindtap='markLocation'></cover-image>
-        <!-- <cover-view class='center-text' bindtap='markLocation'>标记地点</cover-view> -->
       </cover-view>
       <!-- 中心标记点 -->
-      <!-- 撤回按钮 -->
-      <!-- <cover-view class='back'>
-        <cover-image class='back-image' src='../image/back.png' bindtap='backLocation'></cover-image>
-      </cover-view> -->
-      <!-- 撤回按钮 -->
 
       <!-- poi输入框 -->
       <cover-view class='input-modal' wx:if='{{showIpnutModal}}'>
@@ -24,11 +18,6 @@
       </cover-view>
       <!-- poi输入框 -->
     </map>
-
   </view>
-  <view class="btn">
-    <!-- <button bindtap="determine" class="determine-btn" type="primary">确定</button> -->
-    <!-- <button bindtap="translateMarker" class="page-body-button" type="primary">移动</button> -->
-    <!-- <button bindtap="next" class="page-body-button" type="primary">下一个</button> -->
-  </view>
+  
 </view>
