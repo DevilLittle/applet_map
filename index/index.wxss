@@ -1,95 +1,213 @@
-.page-body{
-  padding-left: 10rpx;
-  padding-right: 10rpx;
+.page-body {
+    padding-left: 10rpx;
+    padding-right: 10rpx;
 }
+
 .page-section {
-  box-sizing: border-box;
-  width: 100%;
-  height: 90%;
+    box-sizing: border-box;
+    width: 100%;
+    height: 90%;
 }
 
 .map {
-  width: 100%;
-  height: 1100rpx;
-  position: relative;
+    width: 100%;
+    height: 1100rpx;
+    position: relative;
 }
 
 .center {
-  position: absolute;
-  left: calc(50% - 16px);
-  top: calc(50% - 32px);
-  transform: translate(-50% -50%);
+    position: absolute;
+    left: calc(50% - 16px);
+    top: calc(50% - 32px);
+    transform: translate(-50% -50%);
 }
 
 .center-image {
-  width: 32px;
-  height: 32px;
+    width: 32px;
+    height: 32px;
 }
 
 .center-text {
-  width: 120rpx;
-  height: 50rpx;
-  line-height: 50rpx;
-  text-align: center;
-  border-radius: 4rpx;
-  font-size: 12px;
-  background-color: red;
-  color: #fff;
+    width: 120rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    text-align: center;
+    border-radius: 4rpx;
+    font-size: 12px;
+    background-color: red;
+    color: #fff;
 }
 
 /**
 *输入Modal
 */
+
 .input-modal {
-  width: 450rpx;
-  background-color: #fff;
-  position: relative;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 10px 20rpx;
-  font-size: 14px;
-  overflow: hidden;
-  height: 80px;
+    width: 450rpx;
+    background-color: #fff;
+    position: relative;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20rpx;
+    font-size: 14px;
+    overflow: hidden;
+    height: 80px;
 }
 
 .input-text {
-  display: inline-block;
-  width: 120rpx;
-  height: 32px;
-  line-height: 32px;
-  padding-right: 10rpx;
+    display: inline-block;
+    width: 120rpx;
+    height: 32px;
+    line-height: 32px;
+    padding-right: 10rpx;
 }
 
 .input-info {
-  display: inline-block;
-  width: 280rpx;
-  height: 32px;
-  line-height: 32px;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 20rpx;
-  padding: 0px 16rpx;
-  color: #999;
-  border: 1px solid #dddddd;
-  position: relative;
+    display: inline-block;
+    width: 280rpx;
+    height: 32px;
+    line-height: 32px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20rpx;
+    padding: 0px 16rpx;
+    color: #999;
+    border: 1px solid #ddd;
+    position: relative;
 }
 
 .input-info .hide {
-  position: relative;
-  color: black;
-  top: 2px;
+    position: relative;
+    color: black;
+    top: 2px;
 }
 
 .input-determine {
-  width: 200rpx;
-  height: 30px;
-  border-radius: 8rpx;
-  text-align: center;
-  line-height: 30px;
-  background-color: #2dacfd;
-  color: #fff;
-  position: absolute;
-  right: 20rpx;
-  margin-top: 8px;
+    width: 200rpx;
+    height: 30px;
+    border-radius: 8rpx;
+    text-align: center;
+    line-height: 30px;
+    background-color: #2dacfd;
+    color: #fff;
+    position: absolute;
+    right: 20rpx;
+    margin-top: 8px;
 }
 
+/**
+*到达地点Modal
+*/
+
+.arrive-modal {
+    width: 450rpx;
+    background-color: #fff;
+    position: relative;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20rpx;
+    font-size: 14px;
+    overflow: hidden;
+    height: 80px;
+}
+
+.arrive-info {
+    text-align: center;
+    height: 60rpx;
+    line-height: 60rpx;
+}
+
+.arrive-info {
+    text-align: center;
+    height: 60rpx;
+    line-height: 60rpx;
+}
+
+.position-center {
+    width: 200rpx;
+    height: 30px;
+    border-radius: 8rpx;
+    text-align: center;
+    line-height: 30px;
+    background-color: #2dacfd;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 8px;
+}
+
+/**
+* 采集Modal
+*/
+
+.collect-modal {
+    width: 450rpx;
+    background-color: #fff;
+    position: relative;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20rpx;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.collect-header {
+    text-align: center;
+    height: 60rpx;
+    line-height: 60rpx;
+}
+
+.collect-content {
+    padding: 30rpx 0;
+}
+
+.row {
+}
+
+.icon {
+    width: 40rpx;
+    height: 40rpx;
+    background-color: gray;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+.active{
+    background-color: green;
+}
+
+.text {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 20rpx;
+}
+
+.line {
+    height: 25px;
+    width: 1px;
+    background-color: #ddd;
+    margin-left: 20rpx;
+}
+
+.collect-footer {
+    height: 80rpx;
+    line-height: 80rpx;
+}
+
+.collect-btn{
+ width: 200rpx;
+    height: 30px;
+    border-radius: 8rpx;
+    text-align: center;
+    line-height: 30px;
+    background-color: #2dacfd;
+    color: #fff;
+    float: left;
+}
+
+.collect-btn:first-child{
+    margin-right: 30rpx;
+}

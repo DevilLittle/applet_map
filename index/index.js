@@ -1,3 +1,6 @@
+const Utils = require('../common/Utils.js');
+const Interval = 8;   // 采集时间
+
 Page({
     data: {
         showMarkIcon: true, // 选取路径标记图标
@@ -12,12 +15,26 @@ Page({
         searchText: '', // input 框的输入内容
         inputInfo: '请输入此标记点的poi', // cover-view 显示的 input 的输入内容
         isClickConfirm: false, //是否点击确定
+
+        showArrivedModal: false, //到达地点提示框
+        showRestartModal:false,  // 重新开始提示框
+        reStartInfo:'打开WIFI',  // 重新开始提示信息
+
+        showCollectModal:false,  // 开始采集提示框
+        collectTexts:[
+            '开始收集附近WIFI和蓝牙信息',
+            '正在扫描WIFI和蓝牙',
+            '记录WIFI和蓝牙信息中',
+            '收集完毕'
+
+        ],
+        active:-1,  // 当前进度
     },
     /**
      * 自实现监听器
      */
     watch: {
-        inputInfo: function (newValue) {
+        inputInfo: function(newValue) {
             if (this.data.isClickConfirm) {
                 this.setData({
                     isClickConfirm: false
@@ -27,11 +44,12 @@ Page({
         }
     },
 
-    onReady: function (e) {
+    onReady: function(e) {
         this.mapCtx = wx.createMapContext('myMap');
 
+        // 地图铺满屏幕
         this.getMapStyle();
-
+        // 获取当前所在位置
         this.getLocation();
     },
 
@@ -69,7 +87,7 @@ Page({
     /**
      * 连线
      */
-    connectPoly: function (res) {
+    connectPoly: function(res) {
         let chooseMarkers = [].concat(this.data.markers);
         //连线
         let points = [];
@@ -100,7 +118,7 @@ Page({
     /**
      * 标记点
      */
-    markLocation: function () {
+    markLocation: function() {
 
         this.mapCtx.getCenterLocation({
             success: (res) => {
@@ -128,7 +146,7 @@ Page({
             }
         })
     },
-    backLocation: function () {
+    backLocation: function() {
         let chooseMarkers = [].concat(this.data.markers);
 
         chooseMarkers.pop();
@@ -140,7 +158,7 @@ Page({
     /**
      * 删除连线
      */
-    deletePoly: function () {
+    deletePoly: function() {
         let polyline = [].concat(this.data.polyline);
 
         polyline.pop();
@@ -149,7 +167,8 @@ Page({
         });
     },
 
-    poiInputDetermine: function () {
+    poiInputDetermine: function() {
+        console.log(this.data.inputInfo);
         // 如果 inputInfo有值就执行逻辑
         if (this.data.inputInfo) {
             this.poiInputDetermineLogic();
@@ -162,7 +181,7 @@ Page({
     /**
      * 输入poi名称确定
      */
-    poiInputDetermineLogic: function () {
+    poiInputDetermineLogic: function() {
 
         let chooseMarkers = [].concat(this.data.markers);
 
@@ -181,12 +200,13 @@ Page({
 
         this.setData({
             showIpnutModal: false,
-            showMarkIcon:true,
+            showArrivedModal: true,
+            showMarkIcon: false,
             markers: chooseMarkers
         });
     },
 
-    determine: function () {
+    determine: function() {
         this.setData({
             showMarkIcon: false
         });
@@ -200,8 +220,8 @@ Page({
         });
     },
     /**
-       * 将焦点给到 input
-       */
+     * 将焦点给到 input
+     */
     tapInput() {
         this.setData({
             inputInfo: '',
@@ -223,6 +243,122 @@ Page({
         this.setData({
             inputInfo: val.detail.value || '输入'
         });
+    },
+    /**
+     * 到达地点执行逻辑
+     */
+    arrivedLocation() {
+        this.setData({
+            showArrivedModal: false
+        });
+        this.collcetWifi();
+    },
+
+    /**
+     * 初始化WIFI
+     */
+    collcetWifi() {
+        wx.startWifi({
+            success: (res) => {
+                console.log('success:', res);
+                this.getWifiList();
+            },
+            fail: (res) => {
+                Utils.showTips('', '初始化WIFI失败', false);
+            }
+        })
+    },
+    /**
+     * 获取WIFI列表
+     */
+    getWifiList() {
+        wx.getWifiList({
+            success: res => {
+                console.log('getSuccess:', res);
+                this.onGetWifiList();
+                this.setData({
+                    showCollectModal:true
+                });
+            },
+            fail: res => {
+                console.log('getFail:', res);
+                let errCode = res.errCode;
+                if (errCode === 12006) {
+                    Utils.showTips('提示', '请打开GPS定位', false);
+                    this.setData({
+                        reStartInfo:'打开GPS定位'
+                    });
+                } else if (errCode === 12005) {
+                    Utils.showTips('提示', '请打开WiFi', false);
+                    this.setData({
+                        reStartInfo: '打开WIFI'
+                    });
+                } else {
+                    Utils.showTips('提示', `获取WiFi列表出错：${errCode}`, false);
+                    this.setData({
+                        reStartInfo: '再次获取WIFI列表'
+                    });
+                }
+
+                this.setData({
+                    showRestartModal:true
+                });
+
+            }
+        })
+    },
+    /**
+     * 监听获取到的 wifi 列表数据
+     */
+    onGetWifiList(){
+        wx.onGetWifiList(res=>{
+            this.changeActive();
+
+            console.log(res);
+        })
+    },
+
+    /**
+     * 重新开始采集
+     */
+    restartCollection(){
+        this.setData({
+            showRestartModal:false
+        });
+
+        this.collcetWifi();
+    },
+
+    /**
+     * 采集完毕，开始下一地点采集
+     */
+    collectNext(){
+        this.setData({
+            showCollectModal:false,
+            showMarkIcon:true
+        })
+    },
+    /**
+     * 改变采集进度状态
+     */
+    changeActive(){
+
+        let time = Interval/this.data.collectTexts.length*1000;
+
+        let setIntervals = setInterval(()=>{
+
+            this.setData({
+                active:this.data.active+1
+            });
+
+            console.log(this.data.active);
+            if(this.data.active>=this.data.collectTexts.length-1){
+                clearInterval(setIntervals);
+                this.setData({
+
+                })
+            }
+        },time);
     }
-    
+
 })
