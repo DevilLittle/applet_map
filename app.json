@@ -1,6 +1,7 @@
 {
     "pages": [
-        "index/index"
+        "index/index",
+        "info/info"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -8,9 +9,9 @@
         "navigationBarTitleText": "基于map组件的WiFi采集",
         "navigationBarTextStyle": "black"
     },
-    "permission":{
-        "scope.userLocation":{
-            "desc":"你的位置信息讲用于小程序位置接口的效果展示"
+    "permission": {
+        "scope.userLocation": {
+            "desc": "你的位置信息讲用于小程序位置接口的效果展示"
         }
     }
 }

@@ -49,10 +49,17 @@
                         </cover-view>
                         <cover-view class="line" wx:if="{{index!==collectTexts.length-1}}"></cover-view>
                     </cover-view>
+                    <cover-view class="collect-result" wx:if="{{!isCollecting}}">
+                        <cover-view class="result-title">采集信息：</cover-view>
+                        <cover-view class="result-text">
+                            <cover-view>WIFI：12</cover-view>
+                        </cover-view>
+                    </cover-view>
                 </cover-view>
-                <cover-view class="collect-footer">
-                        <cover-view class='collect-btn'>结束采集</cover-view>
-                        <cover-view class='collect-btn' bindtap='collectNext'>采集下一地点</cover-view>
+
+                <cover-view class="collect-footer" wx:if="{{!isCollecting}}">
+                    <cover-view class='collect-btn' bindtap='endCollect'>结束采集</cover-view>
+                    <cover-view class='collect-btn' bindtap='collectNext'>采集下一地点</cover-view>
                 </cover-view>
             </cover-view>
             <!-- 正在采集 -->

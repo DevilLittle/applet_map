@@ -175,7 +175,8 @@
     display: inline-block;
     vertical-align: middle;
 }
-.active{
+
+.active {
     background-color: green;
 }
 
@@ -192,13 +193,23 @@
     margin-left: 20rpx;
 }
 
+.collect-result{
+    padding: 30rpx 0 0;
+}
+.result-title{
+    font-size: 14px;
+}
+.result-text{
+    line-height: 1.5;
+    padding-top: 20rpx;
+}
 .collect-footer {
     height: 80rpx;
     line-height: 80rpx;
 }
 
-.collect-btn{
- width: 200rpx;
+.collect-btn {
+    width: 200rpx;
     height: 30px;
     border-radius: 8rpx;
     text-align: center;
@@ -208,6 +219,6 @@
     float: left;
 }
 
-.collect-btn:first-child{
+.collect-btn:first-child {
     margin-right: 30rpx;
 }

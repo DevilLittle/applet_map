@@ -1,0 +1,10 @@
+<!--info/info.wxml-->
+<view>
+    <text>info/info.wxml</text>
+    <view wx:for="{{wifiLists}}" wx:key="{{item}}">
+        <view>{{item.name}}</view>
+        <view wx:for="{{item.list}}" wx:key="{{list}}">
+            <view>{{list}}</view>
+        </view>
+    </view>
+</view>
